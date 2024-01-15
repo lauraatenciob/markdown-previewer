@@ -3,9 +3,11 @@ import Markdown from "react-markdown";
 import { useState } from "react";
 import remarkGfm from "remark-gfm";
 import Toolbar from "./Toolbar";
+import { initialText } from "./constans";
 
 function App() {
-  const [editorText, setEditorText] = useState("");
+  
+  const [editorText, setEditorText] = useState(initialText);
 
   function handleChange(event) {
     setEditorText(event.target.value);
@@ -23,6 +25,7 @@ function App() {
           <textarea
             id="editor"
             value={editorText}
+            type="text"
             onChange={handleChange}
           ></textarea>
         </div>
