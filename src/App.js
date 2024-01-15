@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Markdown from "react-markdown";
+import { useState } from "react";
+import remarkGfm from "remark-gfm";
+import Toolbar from "./Toolbar";
 
 function App() {
+  const [editorText, setEditorText] = useState("");
+
+  function handleChange(event) {
+    setEditorText(event.target.value);
+  }
+
+  function handleEdit(text) {
+    setEditorText(editorText.concat(" ", text))
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="App">
+      <Toolbar onEdit={handleEdit}/>
+      <div id="container">
+        <div id="markdown">
+          <textarea
+            id="editor"
+            value={editorText}
+            onChange={handleChange}
+          ></textarea>
+        </div>
+
+        <div id="previewer">
+          <div id="preview">
+            <Markdown remarkPlugins={[remarkGfm]}>{editorText}</Markdown>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
