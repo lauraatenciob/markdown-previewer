@@ -21,7 +21,8 @@ export const initialText= `# Welcome to my React Markdown Previewer!
   And feel free to go crazy ~~crossing stuff out~~.
   
   There's also [links](https://www.freecodecamp.org), and
-  &gt; Block Quotes!
+  
+  > Block Quotes!
   
   And if you want to get really crazy, even tables:
   
